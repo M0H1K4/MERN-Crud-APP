@@ -6,8 +6,7 @@ if (process.env.NODE_ENV != "production") {
 // Import Dependencies
 const express = require("express");
 const connectToDb = require("./config/connectToDb");
-const Note = require("./models/note")
-
+const Note = require("./models/note");
 
 // Create an express app
 const app = express();
@@ -25,13 +24,17 @@ app.get("/", (req, res) => {
 
 app.post("/notes", async (req, res) => {
   // Get the sent in data of request body
-  const title = req.body.title
-  const body = req.body.body
+  const title = req.body.title;
+  const body = req.body.body;
 
   // Create a note with it
-    await Note.create({})
+  const note = await Note.create({
+    title: title,
+    body: body,
+  });
 
   // Respond with the new note
+  res.json({ note: note });
 });
 
 // Start our server
