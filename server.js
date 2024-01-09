@@ -1,10 +1,13 @@
 // Import Dependencies
-const express = require('express')
+const express = require("express");
 
 // Create an express app
-const app = express()
+const app = express();
 
 // Rouning
-
+app.get("/", (req, res) => {
+  res.send("Hello world");
+});
 
 // Start our server
+app.listen(3000);
