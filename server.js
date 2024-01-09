@@ -5,7 +5,7 @@ if (process.env.NODE_ENV != "production") {
 
 // Import Dependencies
 const express = require("express");
-const connectToDb = require("./config/connectToDb")
+const connectToDb = require("./config/connectToDb");
 
 // Create an express app
 const app = express();
@@ -16,6 +16,12 @@ connectToDb();
 // Rouning
 app.get("/", (req, res) => {
   res.json({ hello: "world" });
+});
+
+app.post("/notes", (req, res) => {
+  // Get the sent in data of request body
+  // Create a note with it
+  // Respond with the new note
 });
 
 // Start our server
