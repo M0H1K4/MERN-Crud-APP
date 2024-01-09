@@ -3,4 +3,4 @@ function connectToDb() {
 }
 
 // To export the function
-module.export = connectToDb;
+module.exports = connectToDb;
