@@ -6,9 +6,14 @@ if (process.env.NODE_ENV != "production") {
 // Import Dependencies
 const express = require("express");
 const connectToDb = require("./config/connectToDb");
+const Note = require("./models/note")
+
 
 // Create an express app
 const app = express();
+
+// Configure express app
+app.use(express.json());
 
 // Connect to the database
 connectToDb();
@@ -18,9 +23,14 @@ app.get("/", (req, res) => {
   res.json({ hello: "world" });
 });
 
-app.post("/notes", (req, res) => {
+app.post("/notes", async (req, res) => {
   // Get the sent in data of request body
+  const title = req.body.title
+  const body = req.body.body
+
   // Create a note with it
+    await Note.create({})
+
   // Respond with the new note
 });
 
