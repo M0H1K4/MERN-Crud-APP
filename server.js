@@ -22,6 +22,8 @@ app.get("/", (req, res) => {
   res.json({ hello: "world" });
 });
 
+TODO: // Continue from minute 19
+
 app.post("/notes", async (req, res) => {
   // Get the sent in data of request body
   const title = req.body.title;
