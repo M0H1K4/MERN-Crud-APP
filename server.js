@@ -22,11 +22,23 @@ app.get("/", (req, res) => {
   res.json({ hello: "world" });
 });
 
+// Fetching routes
 app.get("/notes", async (req, res) => {
   // Find all notes
   const notes = await Note.find();
   // Respond with them
   res.json({ notes: notes });
+});
+
+app.get("/notes/:id", async (req, res) => {
+  // Get id off the Url
+  const noteId = req.params.id;
+
+  // Find the note using Id
+  const note = await Note.findById(noteId);
+
+  // Respond with the note
+  res.json({ note: note });
 });
 
 app.post("/notes", async (req, res) => {
