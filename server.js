@@ -22,7 +22,7 @@ app.get("/", (req, res) => {
   res.json({ hello: "world" });
 });
 
-// Fetching routes
+// Fetching notes
 app.get("/notes", async (req, res) => {
   // Find all notes
   const notes = await Note.find();
@@ -30,6 +30,7 @@ app.get("/notes", async (req, res) => {
   res.json({ notes: notes });
 });
 
+// Fetch a single note
 app.get("/notes/:id", async (req, res) => {
   // Get id off the Url
   const noteId = req.params.id;
@@ -41,6 +42,7 @@ app.get("/notes/:id", async (req, res) => {
   res.json({ note: note });
 });
 
+// Add a note to the db
 app.post("/notes", async (req, res) => {
   // Get the sent in data of request body
   const title = req.body.title;
@@ -53,6 +55,25 @@ app.post("/notes", async (req, res) => {
   });
 
   // Respond with the new note
+  res.json({ note: note });
+});
+
+// Update the note
+app.put("/notes/:id", async (req, res) => {
+  // Get the id off the Url
+  const noteId = req.params.id;
+
+  // Get the data off the req body
+  const title = req.body.title;
+  const body = req.body.body;
+
+  // Find and update the record
+  const note = await Note.findByIdAndUpdate(noteId, {
+    title: title,
+    body: body,
+  });
+
+  // Respond with it
   res.json({ note: note });
 });
 
