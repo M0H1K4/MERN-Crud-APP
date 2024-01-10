@@ -22,6 +22,13 @@ app.get("/", (req, res) => {
   res.json({ hello: "world" });
 });
 
+app.get("/notes", async (req, res) => {
+  // Find all notes
+  const notes = await Note.find();
+  // Respond with them
+  res.json({ notes: notes });
+});
+
 app.post("/notes", async (req, res) => {
   // Get the sent in data of request body
   const title = req.body.title;
@@ -35,13 +42,6 @@ app.post("/notes", async (req, res) => {
 
   // Respond with the new note
   res.json({ note: note });
-});
-
-app.get("/notes", async (req, res) => {
-  // Find all notes
-  const notes = await Note.find();
-  // Respond with them
-  res.json({ notes: notes });
 });
 
 // Start our server
