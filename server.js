@@ -22,8 +22,6 @@ app.get("/", (req, res) => {
   res.json({ hello: "world" });
 });
 
-TODO: // Continue from minute 19
-
 app.post("/notes", async (req, res) => {
   // Get the sent in data of request body
   const title = req.body.title;
@@ -39,10 +37,12 @@ app.post("/notes", async (req, res) => {
   res.json({ note: note });
 });
 
-app.get("/notes", (req, res) => {
-  
-})
-
+app.get("/notes", async (req, res) => {
+  // Find all notes
+  const notes = await Note.find();
+  // Respond with them
+  res.json({ notes: notes });
+});
 
 // Start our server
 app.listen(process.env.PORT);
