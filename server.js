@@ -39,5 +39,10 @@ app.post("/notes", async (req, res) => {
   res.json({ note: note });
 });
 
+app.get("/notes", (req, res) => {
+  
+})
+
+
 // Start our server
 app.listen(process.env.PORT);
