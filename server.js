@@ -68,10 +68,13 @@ app.put("/notes/:id", async (req, res) => {
   const body = req.body.body;
 
   // Find and update the record
-  const note = await Note.findByIdAndUpdate(noteId, {
+  await Note.findByIdAndUpdate(noteId, {
     title: title,
     body: body,
   });
+
+  // Find updated note
+  const note = await Note.findById(noteId);
 
   // Respond with it
   res.json({ note: note });
