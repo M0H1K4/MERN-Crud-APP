@@ -59,26 +59,24 @@ app.post("/notes", async (req, res) => {
 });
 
 // Update the note
-app.put("/notes/:id", async (req, res) => {
-  // Get the id off the Url
+app.delete("/notes/:id", async (req, res) => {
   const noteId = req.params.id;
 
-  // Get the data off the req body
-  const title = req.body.title;
-  const body = req.body.body;
+  try {
+    const result = await Note.deleteOne({ _id: noteId });
 
-  // Find and update the record
-  await Note.findByIdAndUpdate(noteId, {
-    title: title,
-    body: body,
-  });
+    if (result.deletedCount === 0) {
+      return res.status(404).json({ message: "Note not found" });
+    }
 
-  // Find updated note
-  const note = await Note.findById(noteId);
-
-  // Respond with it
-  res.json({ note: note });
+    res.json({
+      success: "Note deleted successfully",
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
 });
-
+TODO: // Continue from the minute 31:08
 // Start our server
 app.listen(process.env.PORT);
