@@ -77,6 +77,6 @@ app.delete("/notes/:id", async (req, res) => {
     res.status(500).json({ message: "Internal Server Error" });
   }
 });
-TODO: // Continue from the minute 31:08
+
 // Start our server
 app.listen(process.env.PORT);
