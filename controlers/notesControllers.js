@@ -67,9 +67,9 @@ const deleteNote = async (req, res) => {
 };
 
 module.exports = {
-  fetchNotes: fetchNotes,
-  fetchNote: fetchNote,
-  createNote: createNote,
-  updateNote: updateNote,
-  deleteNote: deleteNote,
+  fetchNotes,
+  fetchNote,
+  createNote,
+  updateNote,
+  deleteNote,
 };
