@@ -18,65 +18,20 @@ app.use(express.json());
 connectToDb();
 
 // Rouning
-app.get("/", (req, res) => {
-  res.json({ hello: "world" });
-});
 
 // Fetching notes
-app.get("/notes", async (req, res) => {
-  // Find all notes
-  const notes = await Note.find();
-  // Respond with them
-  res.json({ notes: notes });
-});
+app.get("/notes", fetchNotes);
 
 // Fetch a single note
-app.get("/notes/:id", async (req, res) => {
-  // Get id off the Url
-  const noteId = req.params.id;
-
-  // Find the note using Id
-  const note = await Note.findById(noteId);
-
-  // Respond with the note
-  res.json({ note: note });
-});
+app.get("/notes/:id", );
 
 // Add a note to the db
-app.post("/notes", async (req, res) => {
-  // Get the sent in data of request body
-  const title = req.body.title;
-  const body = req.body.body;
-
-  // Create a note with it
-  const note = await Note.create({
-    title: title,
-    body: body,
-  });
-
-  // Respond with the new note
-  res.json({ note: note });
-});
+app.post("/notes",);
 
 // Update the note
-app.delete("/notes/:id", async (req, res) => {
-  const noteId = req.params.id;
-
-  try {
-    const result = await Note.deleteOne({ _id: noteId });
-
-    if (result.deletedCount === 0) {
-      return res.status(404).json({ message: "Note not found" });
-    }
-
-    res.json({
-      success: "Note deleted successfully",
-    });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: "Internal Server Error" });
-  }
-});
+app.delete("/notes/:id",);
 
 // Start our server
 app.listen(process.env.PORT);
+
+
