@@ -18,20 +18,10 @@ app.use(express.json());
 connectToDb();
 
 // Rouning
-
-// Fetching notes
 app.get("/notes", notesController.fetchNotes);
-
-// Fetch a single note
 app.get("/notes/:id", notesController.fetchNote);
-
-// Create a new note
 app.post("/notes", notesController.createNote);
-
-// update notes
 app.put("/notes/:id", notesController.updateNote);
-
-// Delete the note
 app.delete("/notes/:id", notesController.deleteNote);
 
 // Start our server
