@@ -6,7 +6,7 @@ if (process.env.NODE_ENV != "production") {
 // Import Dependencies
 const express = require("express");
 const connectToDb = require("./config/connectToDb");
-const Note = require("./models/note");
+const notesController = require("./controlers/notesControllers");
 
 // Create an express app
 const app = express();
@@ -20,18 +20,19 @@ connectToDb();
 // Rouning
 
 // Fetching notes
-app.get("/notes", fetchNotes);
+app.get("/notes", notesController.fetchNotes);
 
 // Fetch a single note
-app.get("/notes/:id", );
+app.get("/notes/:id", notesController.fetchNote);
 
-// Add a note to the db
-app.post("/notes",);
+// Create a new note
+app.post("/notes", notesController.createNote);
 
-// Update the note
-app.delete("/notes/:id",);
+// update notes
+app.put("/notes/:id", notesController.updateNote);
+
+// Delete the note
+app.delete("/notes/:id", notesController.deleteNote);
 
 // Start our server
 app.listen(process.env.PORT);
-
-

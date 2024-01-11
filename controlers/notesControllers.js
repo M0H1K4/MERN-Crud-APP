@@ -1,3 +1,5 @@
+const Note = require("../models/note");
+
 const fetchNotes = async (req, res) => {
   // Find all notes
   const notes = await Note.find();
@@ -34,6 +36,24 @@ const createNote = async (req, res) => {
 const updateNote = async (req, res) => {
   const noteId = req.params.id;
 
+  const title = req.body.title;
+  const body = req.body.body;
+
+  await Note.findByIdAndUpdate(noteId, {
+    title: title,
+    body: body,
+  });
+
+  const note = await Note.find(noteId);
+
+  res.json({
+    note: note,
+  });
+};
+
+const deleteNote = async (req, res) => {
+  const noteId = req.params.id;
+
   try {
     const result = await Note.deleteOne({ _id: noteId });
 
@@ -48,4 +68,12 @@ const updateNote = async (req, res) => {
     console.error(err);
     res.status(500).json({ message: "Internal Server Error" });
   }
+};
+
+module.exports = {
+  fetchNotes: fetchNotes,
+  fetchNote: fetchNote,
+  createNote: createNote,
+  updateNote: updateNote,
+  deleteNote: deleteNote,
 };
