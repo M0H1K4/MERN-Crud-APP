@@ -35,9 +35,7 @@ const createNote = async (req, res) => {
 const updateNote = async (req, res) => {
   const noteId = req.params.id;
 
-  const title = req.body.title;
-  const body = req.body.body;
-
+  const { title, body } = req.body;
   await Note.findByIdAndUpdate(noteId, {
     title,
     body,
