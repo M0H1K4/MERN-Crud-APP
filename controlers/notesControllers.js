@@ -15,13 +15,12 @@ const fetchNote = async (req, res) => {
   const note = await Note.findById(noteId);
 
   // Respond with the note
-  res.json({ note});
+  res.json({ note });
 };
 
 const createNote = async (req, res) => {
   // Get the sent in data of request body
-  const title = req.body.title;
-  const body = req.body.body;
+  const { title, body } = req.body;
 
   // Create a note with it
   const note = await Note.create({
@@ -30,7 +29,7 @@ const createNote = async (req, res) => {
   });
 
   // Respond with the new note
-  res.json({ note: note });
+  res.json({ note });
 };
 
 const updateNote = async (req, res) => {
@@ -40,14 +39,13 @@ const updateNote = async (req, res) => {
   const body = req.body.body;
 
   await Note.findByIdAndUpdate(noteId, {
-    title: title,
-    body: body,
+    title,
+    body,
   });
 
   const note = await Note.find(noteId);
-
   res.json({
-    note: note,
+    note,
   });
 };
 
