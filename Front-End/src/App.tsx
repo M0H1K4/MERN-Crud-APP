@@ -25,7 +25,7 @@ function App() {
   };
 
   const updateCreateFormField = () => {
-    console.log("Gamarjobs dzma <3");
+    alert("ნუ შობი მაგას თუარა დაგაყენე ქურდები თავზე");
   };
   return (
     <>
