@@ -18,16 +18,14 @@ function App() {
   return (
     <>
       <div className="no1">
-        <div className="2">
+        <div className="container">
           <h2>Notes:</h2>
           {notes &&
-            notes.map((note) => {
-              return (
-                <div>
-                  <h3>{note.title}</h3>
-                </div>
-              );
-            })}
+            notes.map((note) => (
+              <div key={note.id}>
+                <h3>{note.title}</h3>
+              </div>
+            ))}
         </div>
       </div>
     </>
