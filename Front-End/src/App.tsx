@@ -23,6 +23,10 @@ function App() {
     setNotes(res.data.notes);
     console.log(res);
   };
+
+  const updateCreateFormField = () => {
+    console.log("Gamarjobs dzma <3");
+  };
   return (
     <>
       <div className="no1">
@@ -39,8 +43,16 @@ function App() {
         <div>
           <h2>Crteate note</h2>
           <form action="">
-            <input value={createForm.title} type="title" />
-            <textarea value={createForm.body} name="body" />
+            <input
+              onChange={updateCreateFormField}
+              value={createForm.title}
+              type="title"
+            />
+            <textarea
+              onChange={updateCreateFormField}
+              value={createForm.body}
+              name="body"
+            />
             <button type="submit">Create note</button>
           </form>
         </div>
