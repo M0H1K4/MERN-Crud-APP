@@ -22,7 +22,7 @@ function App() {
           <h2>Notes:</h2>
           {notes &&
             notes.map((note) => (
-              <div key={note.id}>
+              <div key={note._id}>
                 <h3>{note.title}</h3>
               </div>
             ))}
