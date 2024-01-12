@@ -34,8 +34,8 @@ function App() {
         <div>
           <h2>Crteate note</h2>
           <form action="">
-            <input type="title" />
-            <textarea name="body" />
+            <input value={createForm.title} type="title" />
+            <textarea value={createForm.body} name="body" />
             <button type="submit">Create note</button>
           </form>
         </div>
