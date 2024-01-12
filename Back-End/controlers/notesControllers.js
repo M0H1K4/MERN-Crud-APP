@@ -33,18 +33,23 @@ const createNote = async (req, res) => {
 };
 
 const updateNote = async (req, res) => {
+  // Get the id off the url
   const noteId = req.params.id;
 
+  // Get the data off the req body
   const { title, body } = req.body;
+
+  // Find and update the record
   await Note.findByIdAndUpdate(noteId, {
     title,
     body,
   });
 
-  const note = await Note.find(noteId);
-  res.json({
-    note,
-  });
+  // Find updated note
+  const note = await Note.findById(noteId);
+
+  // Respond with it
+  res.json({ note });
 };
 
 const deleteNote = async (req, res) => {
