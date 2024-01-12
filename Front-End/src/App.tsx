@@ -33,9 +33,17 @@ function App() {
     });
   };
 
-  const createNote = (e) => {
+  const createNote = async (e) => {
     e.preventDefault();
-    console.log("submit");
+
+    const res = await axios.post("http://localhost:3000/notes", createForm);
+
+    setNotes([...notes, res.data.note]);
+
+    setCreateForm({
+      title: "",
+      body: "",
+    });
   };
 
   return (
