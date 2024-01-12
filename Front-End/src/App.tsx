@@ -26,8 +26,17 @@ function App() {
 
   const updateCreateFormField = (e) => {
     const { name, value } = e.target;
-    console.log({ name, value });
+
+    setCreateForm({
+      ...createForm,
+      [name]: value,
+    });
   };
+
+  const createNote = () => {
+    console.log("submit");
+  };
+
   return (
     <>
       <div className="no1">
@@ -43,7 +52,7 @@ function App() {
 
         <div>
           <h2>Crteate note</h2>
-          <form action="">
+          <form onSubmit={createNote}>
             <input
               onChange={updateCreateFormField}
               value={createForm.title}
