@@ -1,12 +1,14 @@
-import { useState } from "react";
+import { useState , useEffect} from "react";
+import axios from "axios";
 
 function App() {
-  const [notes, setNotes] = useState(null)
+  const [notes, setNotes] = useState(null);
 
-  const fetchNotes = () =>{
-    
-  }
-
+  const fetchNotes = async () => {
+    const res = await axios.get("http://localhost:3000/notes");
+    console.log(res);
+  };
+resizeByNotes(notes
   return (
     <>
       <div>Hello Yleo! world ara chemi yle</div>
