@@ -3,7 +3,10 @@ import axios from "axios";
 
 function App() {
   const [notes, setNotes] = useState(null);
-
+  const [createForm, setCreateForm] = useState({
+    title: "",
+    body: "",
+  });
   useEffect(() => {
     fetchNotes();
   }, []);
