@@ -2,18 +2,23 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 function App() {
+  // State
   const [notes, setNotes] = useState(null);
   const [createForm, setCreateForm] = useState({
     title: "",
     body: "",
   });
+
+  // useEffect
   useEffect(() => {
     fetchNotes();
   }, []);
-  //
 
+  // Functions
   const fetchNotes = async () => {
+    // Fetch notes
     const res = await axios.get("http://localhost:3000/notes");
+    // Set to state
     console.log(res);
     setNotes(res.data.notes);
     console.log(res);
