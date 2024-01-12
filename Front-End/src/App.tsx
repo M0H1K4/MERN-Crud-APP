@@ -33,7 +33,8 @@ function App() {
     });
   };
 
-  const createNote = () => {
+  const createNote = (e) => {
+    e.preventDefault();
     console.log("submit");
   };
 
