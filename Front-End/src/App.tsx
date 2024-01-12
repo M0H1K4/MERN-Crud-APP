@@ -24,8 +24,9 @@ function App() {
     console.log(res);
   };
 
-  const updateCreateFormField = () => {
-    alert("ნუ შობი მაგას თუარა დაგაყენე ქურდები თავზე");
+  const updateCreateFormField = (e) => {
+    const { name, value } = e.target;
+    console.log({ name, value });
   };
   return (
     <>
