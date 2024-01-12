@@ -40,32 +40,35 @@ function App() {
 
     setNotes([...notes, res.data.note]);
 
-    setCreateForm({
-      title: "",
-      body: "",
-    });
+    // Clear form state
+    setCreateForm({ title: "", body: "" });
   };
 
   return (
     <>
-      <div className="no1">
-        <div className="container">
+    <div>
+      <div className="App">
+        <div>
           <h2>Notes:</h2>
-          {notes &&
-            notes.map((note) => (
+          {notes && 
+          notes.map((note) =>{
+            return(
               <div key={note._id}>
                 <h3>{note.title}</h3>
               </div>
-            ))}
+            )
+          })}
+        </div>
+
         </div>
 
         <div>
-          <h2>Crteate note</h2>
+          <h2>Create note</h2>
           <form onSubmit={createNote}>
             <input
               onChange={updateCreateFormField}
               value={createForm.title}
-              type="title"
+              name="title"
             />
             <textarea
               onChange={updateCreateFormField}
