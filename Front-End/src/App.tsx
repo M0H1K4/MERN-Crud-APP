@@ -105,9 +105,6 @@ function App() {
 
   return (
     <div className="App">
-      TODO: 
-    // delete this for better error messages
-     // asdasdasdaskdhagbsjhdbvasjhdbasd asdasdasd
       <div>
         <h2>Notes:</h2>
         {notes &&
