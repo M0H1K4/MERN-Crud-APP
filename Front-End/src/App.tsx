@@ -106,7 +106,7 @@ function App() {
   return (
     <div className="App">
       TODO: 
-
+    delete this for better error messages
       
       <div>
         <h2>Notes:</h2>
