@@ -28,7 +28,7 @@ const createNote = async (req, res) => {
     body: body,
   });
 
-  // Respond with the new note
+  // Respond with the new note hghg
   res.json({ note });
 };
 
