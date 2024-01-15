@@ -5,7 +5,7 @@ const notesStore = create((set) => ({
 
  fetchNotes: () =>{
   TODO: //continue from 5:01
-  // well
+  // well today
  }
 }))
 
