@@ -11,4 +11,4 @@ const notesStore = create((set) => ({
 
 export default notesStore;
 
-// I think this is  probably is better than
+// I think this is  probably is better than writing
