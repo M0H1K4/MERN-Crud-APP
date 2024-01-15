@@ -7,7 +7,7 @@ const notesStore = create((set) => ({
   TODO: //continue from 5:01
   // well today is done but tomorrow I will  continue and make more than 
   // 50 contributions  on github.com and make record of the year for me
-  // I will conquer the world with my skills 
+  // I will conquer the world with my skills bro
  }  
 }))
 
