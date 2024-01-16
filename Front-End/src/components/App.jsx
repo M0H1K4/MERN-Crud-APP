@@ -149,13 +149,13 @@ function App() {
           <h2>Create note</h2>
           <form onSubmit={createNote}>
             <input
-              onChange={updateCreateFormField}
-              value={createForm.title}
+              onChange={store.updateCreateFormField}
+              value={store.createForm.title}
               name="title"
             />
             <textarea
-              onChange={updateCreateFormField}
-              value={createForm.body}
+              onChange={store.updateCreateFormField}
+              value={store.createForm.body}
               name="body"
             />
             <button type="submit">Create note</button>
