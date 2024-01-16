@@ -1,14 +1,19 @@
-import { create } from 'zustand'
+import { create } from "zustand";
 
 const notesStore = create((set) => ({
- notes: null,
+  notes: null,
 
- fetchNotes: () =>{
-  TODO: //continue from 5:01
-  
- }  
-}))
+  fetchNotes: async () => {
+    // Fetch the notes
+    const res = await axios.get("http://localhost:3000/notes");
+
+    // Set to state
+    set({
+      notes: res.data.notes,
+    });
+  },
+}));
 
 export default notesStore;
 
-// I think this is  probably is better than writing this    
+//
