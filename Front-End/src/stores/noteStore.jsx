@@ -44,6 +44,18 @@ const notesStore = create((set) => ({
       },
     });
   },
+  deleteNote: async (_id) => {
+    // Delete the note
+    const res = await axios.delete(`http://localhost:3000/notes/${_id}`);
+    const { notes } = notesStore.getState().notes;
+
+    // Update state
+    const newNotes = notes.filter((note) => {
+      return note._id !== _id;
+    });
+
+    setNotes(newNotes);
+  },
 }));
 
 export default notesStore;
