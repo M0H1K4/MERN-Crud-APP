@@ -30,8 +30,20 @@ const notesStore = create((set) => ({
       };
     });
   },
+  createNote: async (e) => {
+    e.preventDefault();
+
+    const { createForm, notes } = notesStore.getState();
+    const res = await axios.post("http://localhost:3000/notes", createForm);
+
+    set({
+      notes: [...notes, res.data.note],
+      createForm: {
+        title: "",
+        body: "",
+      },
+    });
+  },
 }));
 
 export default notesStore;
-
-//

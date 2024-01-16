@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import notesStore from "../stores/noteStore";
 
-
 function App() {
   const store = notesStore();
 
@@ -147,7 +146,7 @@ function App() {
       {!updateForm._id && (
         <div>
           <h2>Create note</h2>
-          <form onSubmit={createNote}>
+          <form onSubmit={store.createNote}>
             <input
               onChange={store.updateCreateFormField}
               value={store.createForm.title}
