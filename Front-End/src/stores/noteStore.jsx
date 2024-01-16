@@ -45,16 +45,22 @@ const notesStore = create((set) => ({
     });
   },
   deleteNote: async (_id) => {
-    // Delete the note
-    const res = await axios.delete(`http://localhost:3000/notes/${_id}`);
-    const { notes } = notesStore.getState().notes;
+    try {
+      // Delete the note
+      await axios.delete(`http://localhost:3000/notes/${_id}`);
 
-    // Update state
-    const newNotes = notes.filter((note) => {
-      return note._id !== _id;
-    });
+      // Get the current notes from the store
+      const { notes } = notesStore.getState();
 
-    setNotes(newNotes);
+      // Update state in the store
+      const newNotes = notes.filter((note) => note._id !== _id);
+      set({ notes: newNotes });
+
+      // Update state locally (if needed)
+      setNotes(newNotes);
+    } catch (error) {
+      console.error("Error deleting note:", error);
+    }
   },
 }));
 
